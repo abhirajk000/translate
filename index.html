@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hindi-English Translation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 119, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.08),
+                0 1px 0 rgba(255, 255, 255, 0.8) inset;
+            padding: 32px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-section {
+            text-align: center;
+            padding: 48px 32px;
+            margin: -32px -32px 32px -32px;
+            background: 
+                linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(168, 85, 247, 0.05)),
+                linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 24px 24px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #1e293b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            margin-top: 16px;
+            font-size: 1.25rem;
+            color: #64748b;
+            font-weight: 500;
+            opacity: 0.9;
+            letter-spacing: 0.25px;
+        }
+
+        .translation-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 
+                0 1px 3px rgba(0, 0, 0, 0.05),
+                0 4px 12px rgba(0, 0, 0, 0.04);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .translation-card {
+                display: grid;
+                grid-template-columns: auto 1fr 1fr;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            .card-content {
+                display: contents;
+            }
+            
+            .english-text.show {
+                opacity: 1;
+                max-height: none;
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+                transform: translateY(0);
+            }
+        }
+
+        .translation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .translation-card:hover::before {
+            opacity: 1;
+        }
+
+        .translation-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.08),
+                0 8px 24px rgba(0, 0, 0, 0.06);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .card-number {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+            box-shadow: 
+                0 2px 8px rgba(99, 102, 241, 0.2),
+                0 1px 0 rgba(255, 255, 255, 0.1) inset;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .typing-mode .card-number {
+            cursor: default;
+        }
+
+        .click-mode .card-number {
+            cursor: pointer;
+        }
+
+        .card-number.wrong {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            transform: scale(1.1);
+        }
+
+        .card-number.correct {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+            transform: scale(1.1);
+        }
+
+
+
+        .card-content {
+            flex: 1;
+        }
+
+
+
+        .hindi-text {
+            font-size: 1.3rem;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+        }
+
+        .english-text {
+            font-size: 1.1rem;
+            color: #4a5568;
+            font-style: italic;
+            opacity: 0;
+            max-height: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .english-text.show {
+            opacity: 1;
+            max-height: 100px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid rgba(102, 126, 234, 0.2);
+            transform: translateY(0);
+        }
+
+        .typing-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-top: 10px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .typing-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .validate-btn {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 8px 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+
+
+        .validate-btn.hidden {
+            display: none;
+        }
+
+        .validate-btn.correct {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+        }
+
+        .typing-section {
+            margin-top: 10px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .typing-section.expanded {
+            opacity: 1;
+            max-height: 300px;
+        }
+
+        .hindi-text.clickable {
+            position: relative;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+
+
+        .hindi-text.clickable {
+            position: relative;
+        }
+
+        .validate-tick {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            font-size: 1rem;
+            background: rgba(72, 187, 120, 0.1);
+            border: 2px solid rgba(72, 187, 120, 0.3);
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(72, 187, 120, 0.2);
+            z-index: 10;
+        }
+
+        .typing-section.expanded + * .validate-tick,
+        .typing-section.expanded ~ * .validate-tick {
+            opacity: 0.8;
+        }
+
+        /* Better approach - show tick when parent card has expanded typing section */
+        .translation-card:has(.typing-section.expanded) .validate-tick {
+            opacity: 0.8;
+        }
+
+        /* Fallback for browsers that don't support :has() */
+        .card-expanded .validate-tick {
+            opacity: 0.8;
+        }
+
+        .validate-tick:hover {
+            background: rgba(72, 187, 120, 0.2) !important;
+            border-color: rgba(72, 187, 120, 0.5);
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+        }
+
+        .result-message {
+            margin-top: 10px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .result-correct {
+            background: #f0fff4;
+            color: #38a169;
+            border: 1px solid #9ae6b4;
+        }
+
+        .result-wrong {
+            background: #fff5f5;
+            color: #e53e3e;
+            border: 1px solid #feb2b2;
+        }
+
+        .typing-mode .english-text {
+            display: none;
+        }
+
+        .click-hint {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .control-panel {
+            color: #475569;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            box-shadow: 
+                0 1px 3px rgba(0, 0, 0, 0.05),
+                0 4px 12px rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .control-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .controls-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .mode-toggle.compact {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            width: auto;
+            min-width: 80px;
+        }
+
+        .score-section.compact {
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .score-circle {
+            width: 40px;
+            height: 40px;
+            font-size: 0.7rem;
+        }
+
+        .score-number {
+            font-size: 1rem;
+        }
+
+        .reset-btn.compact {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            width: auto;
+            min-width: 40px;
+            margin-top: 0;
+        }
+
+        .reset-btn.compact span:not(.reset-icon) {
+            display: none;
+        }
+
+        .mode-toggle {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            color: #6366f1;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 
+                0 1px 3px rgba(99, 102, 241, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .mode-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: left 0.8s ease;
+        }
+
+
+
+        .mode-toggle.active {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 
+                0 4px 16px rgba(99, 102, 241, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+
+
+        .mode-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+
+
+        .mode-toggle.active .mode-icon {
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-3px) scale(1.1); }
+        }
+
+        .score-section {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .score-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+
+
+        .file-selector {
+            margin-bottom: 12px;
+        }
+
+
+
+        .file-label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.8rem;
+        }
+
+        .file-select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 0.8rem;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+
+
+        .file-select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .score-correct {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+        }
+
+        .score-wrong {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        }
+
+        .score-number {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        .reset-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+            background: linear-gradient(135deg, #ff5252, #e53935);
+        }
+
+        .reset-icon {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .reset-btn:hover .reset-icon {
+            transform: rotate(180deg);
+        }
+
+        .instruction {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 247, 255, 0.9));
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .grammar-item {
+            margin-bottom: 15px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            border-right: 4px solid #667eea;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d3748;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+
+
+
+        .grammar-item:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+
+            .container {
+                padding: 16px;
+                margin: 0;
+                border-radius: 0;
+                min-height: 100vh;
+            }
+
+            .header-section {
+                padding: 24px 16px;
+                margin: -16px -16px 20px -16px;
+                border-radius: 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+                margin-top: 12px;
+            }
+
+            .translation-card {
+                padding: 16px;
+                margin-bottom: 12px;
+                gap: 16px;
+                border-radius: 12px;
+            }
+            
+            .hindi-text {
+                font-size: 1.1rem;
+            }
+            
+            .english-text {
+                font-size: 1rem;
+            }
+
+            .card-number {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+
+            .mode-icon {
+                font-size: 1rem;
+            }
+
+            .control-panel {
+                padding: 16px;
+                margin-bottom: 16px;
+                border-radius: 12px;
+            }
+
+            .score-circle {
+                width: 36px;
+                height: 36px;
+            }
+
+            .score-number {
+                font-size: 0.9rem;
+            }
+
+            .score-label {
+                font-size: 0.6rem;
+            }
+
+            .controls-row {
+                gap: 8px;
+            }
+
+            .mode-toggle.compact {
+                padding: 6px 10px;
+                min-width: 70px;
+                font-size: 0.75rem;
+            }
+
+            .reset-btn.compact {
+                padding: 6px 10px;
+                min-width: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1>Translation Practice</h1>
+            <div class="subtitle">✨ Hindi to English Learning App</div>
+        </div>
+        
+        <!-- Control Panel with Mode Switch and Score -->
+        <div class="control-panel">
+            <div class="control-grid">
+                <!-- JSON File Selector -->
+                <div class="file-selector">
+                    <label for="json-select" class="file-label">📁 Dataset:</label>
+                    <select id="json-select" class="file-select">
+                        <option value="sets/1_11.json">Set 1&11 - Present/Past Continuous (Active)</option>
+                        <option value="sets/2_12.json">Set 2&12 - Present/Past Continuous (Passive)</option>
+                        <option value="sets/4_14.json">Set 4&14 - Simple Present/Past (Active)</option>
+                    </select>
+                </div>
+                
+                <!-- Mode and Score Section -->
+                <div class="controls-row">
+                    <!-- Mode toggle button -->
+                    <button class="mode-toggle compact" id="mode-toggle">
+                        <span class="mode-icon" id="mode-icon">📝</span>
+                        <span id="mode-text">Type</span>
+                    </button>
+
+                    <!-- Score section -->
+                    <div class="score-section compact">
+                        <div class="score-circle score-correct">
+                            <div class="score-number" id="correct-score">0</div>
+                            <div class="score-label">✓</div>
+                        </div>
+                        <div class="score-circle score-wrong">
+                            <div class="score-number" id="wrong-score">0</div>
+                            <div class="score-label">✗</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Reset button -->
+                    <button class="reset-btn compact" id="reset-btn" onclick="resetProgress()">
+                        <span class="reset-icon">🔄</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instruction" id="grammar-info">
+            📖 Click on any Hindi sentence to reveal its English translation (auto-hides in 2s)
+        </div>
+        <div id="translations-container">
+            <!-- Translations will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // Store current translations globally
+        let currentTranslations = [];
+
+        // Function to load translations from JSON file
+        async function loadTranslations(customUrl = 'sets/1_11.json') {
+            try {
+                const response = await fetch(customUrl);
+                let rawText = await response.text();
+                // Remove BOM if present
+                if (rawText && rawText.charCodeAt(0) === 0xFEFF) {
+                    rawText = rawText.slice(1);
+                }
+                // Remove any leading non-JSON content before '[' or '{'
+                const firstJsonStart = rawText.search(/[\[{]/);
+                if (firstJsonStart > 0) {
+                    rawText = rawText.slice(firstJsonStart);
+                }
+                const translations = JSON.parse(rawText);
+                currentTranslations = translations;
+                displayTranslations(translations);
+            } catch (error) {
+                console.error('Error loading translations:', error);
+                // Fallback data in case JSON file doesn't load
+                const fallbackData = [
+                    {
+                        "structure": "",
+                        "tense": "",
+                        "continuity": ""
+                    },
+                    {
+                        "hindi": "",
+                        "english": ""
+                    },
+                    {
+                        "hindi": "",
+                        "english": ""
+                    }
+                ];
+                currentTranslations = fallbackData;
+                displayTranslations(fallbackData);
+            }
+        }
+
+        // Function to handle file selection from dropdown
+        function handleFileSelect(event) {
+            const selectedFile = event.target.value;
+            console.log('Selected file:', selectedFile);
+            
+            // Reset scores when changing datasets
+            correctCount = 0;
+            wrongCount = 0;
+            updateScore();
+            
+            // URL encode the file path to handle special characters like &
+            const encodedFile = encodeURIComponent(selectedFile);
+            console.log('Encoded file path:', encodedFile);
+            
+            // Load the selected JSON file
+            loadTranslations(selectedFile);
+        }
+
+        // Function to display grammar info
+        function displayGrammarInfo(translations) {
+            const grammarElement = document.getElementById('grammar-info');
+            console.log('All translations:', translations);
+            console.log('First item:', translations[0]);
+            
+            // Check first item directly (since it should be the grammar info)
+            const firstItem = translations[0];
+            
+            if (firstItem && firstItem.structure && firstItem.tense && firstItem.continuity) {
+                grammarElement.innerHTML = `
+                    <div class="grammar-item">📚 ${firstItem.structure}</div>
+                    <div class="grammar-item">⏰ ${firstItem.tense}</div>
+                    <div class="grammar-item">🔗 ${firstItem.continuity}</div>
+                `;
+                console.log('Grammar info updated from first item');
+            } else {
+                console.log('First item does not have grammar info:', firstItem);
+                grammarElement.innerHTML = '📖 No grammar information available';
+            }
+        }
+
+        // Function to display translations
+        function displayTranslations(translations) {
+            const container = document.getElementById('translations-container');
+            container.innerHTML = '';
+
+            // Display grammar info
+            displayGrammarInfo(translations);
+
+            // Filter out grammar info object and only process translation items
+            const translationItems = translations.filter(item => item.hindi && item.english);
+            
+            translationItems.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'translation-card';
+                
+                if (isTypingMode) {
+                    card.innerHTML = `
+                        <div class="card-number" id="number-${index}">${index + 1}</div>
+                        <div class="card-content">
+                            <div class="hindi-text clickable" id="hindi-${index}">
+                                ${item.hindi}
+                                <div class="validate-tick" id="validate-tick-${index}" onclick="checkAnswer(${index})">✅</div>
+                            </div>
+                            <div class="typing-section" id="typing-${index}">
+                                <input type="text" class="typing-input" id="input-${index}" placeholder="Type English translation...">
+                                <div class="result-message" id="result-${index}"></div>
+                                <div class="english-text" id="english-${index}" style="display: none;">${item.english}</div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    card.innerHTML = `
+                        <div class="card-number" id="number-${index}">${index + 1}</div>
+                        <div class="card-content">
+                            <div class="hindi-text">${item.hindi}</div>
+                            <div class="english-text" id="english-${index}">${item.english}</div>
+                        </div>
+                    `;
+                }
+
+                // First append the card to container
+                container.appendChild(card);
+                
+                // Add Enter key support for typing mode
+                if (isTypingMode) {
+                    const inputField = document.getElementById(`input-${index}`);
+                    if (inputField) {
+                        inputField.addEventListener('keypress', function(e) {
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                                checkAnswer(index);
+                            }
+                        });
+                    }
+                }
+                
+                // Add card click listener for typing mode
+                if (isTypingMode) {
+                    // Make entire card clickable for typing mode
+                    let touchStartTime = 0;
+                    let clickProcessed = false;
+                    
+                    card.addEventListener('touchstart', function(e) {
+                        touchStartTime = Date.now();
+                        clickProcessed = false;
+                    }, { passive: true });
+                    
+                    card.addEventListener('touchend', function(e) {
+                        // Don't expand if clicking on input field or validate tick
+                        if (e.target.closest('.typing-input, .validate-tick')) {
+                            return;
+                        }
+                        e.preventDefault();
+                        const touchDuration = Date.now() - touchStartTime;
+                        if (touchDuration < 500 && !clickProcessed) { // Quick tap
+                            clickProcessed = true;
+                            expandTyping(index);
+                        }
+                    }, { passive: false });
+                    
+                    card.addEventListener('click', function(e) {
+                        // Don't expand if clicking on input field
+                        if (e.target.closest('.typing-input')) {
+                            return;
+                        }
+                        // Check if clicking on the tick button (right side of Hindi text)
+                        const hindiText = document.getElementById(`hindi-${index}`);
+                        if (hindiText && e.target === hindiText) {
+                            const rect = hindiText.getBoundingClientRect();
+                            const clickX = e.clientX;
+                            const rightZone = rect.right - 50; // 50px from right edge
+                            if (clickX > rightZone) {
+                                // Click on tick button area - validate answer
+                                e.preventDefault();
+                                checkAnswer(index);
+                                return;
+                            }
+                        }
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (!clickProcessed) {
+                            expandTyping(index);
+                        }
+                    });
+                }
+                
+                // Add event listeners only for click mode
+                if (!isTypingMode) {
+                    // Make entire card clickable for click mode with scroll detection
+                    let touchStartTime = 0;
+                    let touchStartY = 0;
+                    let touchStartX = 0;
+                    let clickProcessed = false;
+                    let autoHideTimeout = null;
+                    
+                    const showEnglish = () => {
+                        const englishElement = document.getElementById(`english-${index}`);
+                        const clickHint = card.querySelector('.click-hint');
+                        
+                        // First, collapse all other cards and clear their timeouts
+                        const allEnglishElements = document.querySelectorAll('.english-text');
+                        const allClickHints = document.querySelectorAll('.click-hint');
+                        
+                        allEnglishElements.forEach((el, idx) => {
+                            if (idx !== index) {
+                                el.classList.remove('show');
+                            }
+                        });
+                        
+                        allClickHints.forEach((hint, idx) => {
+                            if (idx !== index) {
+                                hint.style.display = 'block';
+                            }
+                        });
+                        
+                        // Show current card answer
+                        if (englishElement) {
+                            englishElement.classList.add('show');
+                            if (clickHint) clickHint.style.display = 'none';
+                            
+                            // Auto hide after 2 seconds
+                            if (autoHideTimeout) {
+                                clearTimeout(autoHideTimeout);
+                            }
+                            autoHideTimeout = setTimeout(() => {
+                                englishElement.classList.remove('show');
+                                if (clickHint) clickHint.style.display = 'block';
+                            }, 2000);
+                        }
+                    };
+                    
+                    card.addEventListener('touchstart', function(e) {
+                        // Don't toggle if clicking on number button
+                        if (e.target.closest('.card-number')) {
+                            return;
+                        }
+                        touchStartTime = Date.now();
+                        touchStartY = e.touches[0].clientY;
+                        touchStartX = e.touches[0].clientX;
+                        clickProcessed = false;
+                    }, { passive: true });
+                    
+                    card.addEventListener('touchend', function(e) {
+                        // Don't toggle if clicking on number button
+                        if (e.target.closest('.card-number')) {
+                            return;
+                        }
+                        
+                        const touchDuration = Date.now() - touchStartTime;
+                        const touchEndY = e.changedTouches[0].clientY;
+                        const touchEndX = e.changedTouches[0].clientX;
+                        
+                        // Calculate movement distance
+                        const moveY = Math.abs(touchEndY - touchStartY);
+                        const moveX = Math.abs(touchEndX - touchStartX);
+                        const totalMove = Math.sqrt(moveX * moveX + moveY * moveY);
+                        
+                        // Only trigger if it's a quick tap with minimal movement (not a scroll)
+                        if (touchDuration < 300 && totalMove < 10 && !clickProcessed) {
+                            e.preventDefault();
+                            clickProcessed = true;
+                            showEnglish();
+                        }
+                    }, { passive: false });
+                    
+                    card.addEventListener('click', function(e) {
+                        // Don't toggle if clicking on number button
+                        if (e.target.closest('.card-number')) {
+                            return;
+                        }
+                        if (!clickProcessed) {
+                            showEnglish();
+                        }
+                    });
+                }
+
+                // Add number button click - different behavior for each mode
+                const numberButton = card.querySelector('.card-number');
+                if (numberButton) {
+                    numberButton.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Prevent card click event
+                        
+                        if (isTypingMode) {
+                            // In typing mode: no manual click allowed - only automatic states
+                            // Numbers are controlled by answer validation only
+                            return;
+                        } else {
+                            // In click mode: allow toggle (original behavior)
+                            if (numberButton.classList.contains('wrong')) {
+                                numberButton.classList.remove('wrong');
+                                wrongCount--;
+                            } else {
+                                numberButton.classList.add('wrong');
+                                wrongCount++;
+                            }
+                            updateScore();
+                        }
+                    });
+                }
+            });
+        }
+
+        // Score tracking with local storage
+        let wrongCount = parseInt(localStorage.getItem('tra_wrong_count') || '0');
+        let correctCount = parseInt(localStorage.getItem('tra_correct_count') || '0');
+        let isTypingMode = localStorage.getItem('tra_typing_mode') === 'true' || false;
+        let answeredQuestions = JSON.parse(localStorage.getItem('tra_answered_questions') || '{}');
+
+        function updateScore() {
+            document.getElementById('wrong-score').textContent = wrongCount;
+            document.getElementById('correct-score').textContent = correctCount;
+            
+            // Save to local storage
+            localStorage.setItem('tra_wrong_count', wrongCount.toString());
+            localStorage.setItem('tra_correct_count', correctCount.toString());
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('tra_typing_mode', isTypingMode.toString());
+            localStorage.setItem('tra_answered_questions', JSON.stringify(answeredQuestions));
+        }
+
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset all progress? This will clear scores and answered questions.')) {
+                wrongCount = 0;
+                correctCount = 0;
+                answeredQuestions = {};
+                
+                // Clear local storage
+                localStorage.removeItem('tra_wrong_count');
+                localStorage.removeItem('tra_correct_count');
+                localStorage.removeItem('tra_answered_questions');
+                
+                // Update UI
+                updateScore();
+                displayTranslations(currentTranslations);
+                
+                alert('Progress reset successfully!');
+            }
+        }
+
+        // Toggle between modes
+        function toggleMode() {
+            isTypingMode = !isTypingMode;
+            const modeButton = document.getElementById('mode-toggle');
+            const modeText = document.getElementById('mode-text');
+            const modeIcon = document.getElementById('mode-icon');
+            const container = document.getElementById('translations-container');
+            
+            if (isTypingMode) {
+                modeButton.classList.add('active');
+                modeText.textContent = 'Click';
+                modeIcon.textContent = '👆';
+                container.classList.add('typing-mode');
+                container.classList.remove('click-mode');
+                displayTranslations(currentTranslations); // Refresh with typing mode
+            } else {
+                modeButton.classList.remove('active');
+                modeText.textContent = 'Type';
+                modeIcon.textContent = '📝';
+                container.classList.remove('typing-mode');
+                container.classList.add('click-mode');
+                displayTranslations(currentTranslations); // Refresh with click mode
+            }
+            
+            // Save mode to local storage
+            saveToLocalStorage();
+        }
+
+        // Validate typed answer
+        function validateAnswer(userInput, correctAnswer, resultElement) {
+            const userText = userInput.toLowerCase().trim();
+            const correctText = correctAnswer.toLowerCase().trim();
+            
+            if (userText === correctText) {
+                resultElement.className = 'result-message result-correct';
+                resultElement.textContent = '✅ Correct! Well done!';
+            } else {
+                resultElement.className = 'result-message result-wrong';
+                resultElement.innerHTML = `❌ Wrong! Correct answer: <strong>${correctAnswer}</strong>`;
+            }
+        }
+
+        // Expand typing section when Hindi text is clicked
+        function expandTyping(index) {
+            console.log('Expanding typing section for index:', index);
+            
+            // First, collapse all other typing sections and remove card-expanded class
+            const allTypingSections = document.querySelectorAll('.typing-section');
+            const allCards = document.querySelectorAll('.translation-card');
+            allTypingSections.forEach((section, idx) => {
+                if (idx !== index) {
+                    section.classList.remove('expanded');
+                }
+            });
+            allCards.forEach(card => card.classList.remove('card-expanded'));
+            
+            // Wait a bit then expand the clicked one
+            setTimeout(() => {
+                const typingSection = document.getElementById(`typing-${index}`);
+                const currentCard = typingSection?.closest('.translation-card');
+                if (typingSection) {
+                    typingSection.classList.add('expanded');
+                    if (currentCard) {
+                        currentCard.classList.add('card-expanded');
+                    }
+                    console.log('Added expanded class to typing section');
+                    
+                    // Focus on input field after expansion with longer delay
+                    setTimeout(() => {
+                        const inputField = document.getElementById(`input-${index}`);
+                        if (inputField) {
+                            inputField.focus();
+                            console.log('Focused on input field');
+                        }
+                    }, 700); // Increased delay for 0.6s animation
+                }
+            }, 100); // Small delay before expanding
+        }
+
+        // Check answer function for typing mode
+        function checkAnswer(index) {
+            const userInput = document.getElementById(`input-${index}`).value;
+            const correctAnswer = currentTranslations[index + 1].english; // +1 because first item is grammar info
+            const resultElement = document.getElementById(`result-${index}`);
+            const numberButton = document.getElementById(`number-${index}`);
+            const hindiText = document.getElementById(`hindi-${index}`);
+            
+            // Create unique question ID based on current file and index
+            const currentFile = document.getElementById('json-select').value;
+            const questionId = `${currentFile}_${index}`;
+            
+            validateAnswer(userInput, correctAnswer, resultElement);
+            
+            // Check if answer is wrong
+            const userText = userInput.toLowerCase().trim();
+            const correctText = correctAnswer.toLowerCase().trim();
+            const isCorrect = userText === correctText;
+            
+            // Save answered question to local storage
+            answeredQuestions[questionId] = {
+                userAnswer: userInput,
+                correctAnswer: correctAnswer,
+                isCorrect: isCorrect,
+                timestamp: Date.now()
+            };
+            saveToLocalStorage();
+            
+            if (!isCorrect) {
+                // Make number button red immediately for wrong answer
+                if (numberButton && !numberButton.classList.contains('wrong')) {
+                    numberButton.classList.add('wrong');
+                    wrongCount++;
+                    updateScore();
+                }
+                
+                // Hide tick button by changing opacity
+                if (hindiText) {
+                    hindiText.style.setProperty('--tick-opacity', '0.3');
+                }
+            } else {
+                // Make number button green for correct answer
+                if (numberButton) {
+                    numberButton.classList.add('correct');
+                    numberButton.classList.remove('wrong'); // Remove wrong if it was there
+                    correctCount++;
+                    updateScore();
+                }
+                
+                // Show success on tick button
+                if (hindiText) {
+                    hindiText.style.setProperty('--tick-opacity', '1');
+                    hindiText.style.setProperty('--tick-bg', 'rgba(72, 187, 120, 0.3)');
+                }
+            }
+            
+            // Show correct answer after validation
+            setTimeout(() => {
+                const englishElement = document.getElementById(`english-${index}`);
+                englishElement.style.display = 'block';
+                englishElement.style.opacity = '1';
+            }, 500);
+        }
+
+        // Load translations when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Restore saved scores
+            updateScore();
+            
+            // Restore saved mode
+            if (isTypingMode) {
+                const modeButton = document.getElementById('mode-toggle');
+                const modeText = document.getElementById('mode-text');
+                const modeIcon = document.getElementById('mode-icon');
+                const container = document.getElementById('translations-container');
+                
+                modeButton.classList.add('active');
+                modeText.textContent = 'Click';
+                modeIcon.textContent = '👆';
+                container.classList.add('typing-mode');
+                container.classList.remove('click-mode');
+            }
+            
+            loadTranslations();
+            
+            // Add mode toggle event listener
+            document.getElementById('mode-toggle').addEventListener('click', toggleMode);
+            
+            // Add file select event listener
+            document.getElementById('json-select').addEventListener('change', handleFileSelect);
+        });
+    </script>
+</body>
+</html>
