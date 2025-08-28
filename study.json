@@ -1,0 +1,283 @@
+[
+  {
+    "structure": "Study Q/A Topics",
+    "tense": "Interview topics and explanations",
+    "continuity": "Click topic to reveal answer; Type mode to practice"
+  },
+  
+        {
+    "hindi": "What is OOPs (Object-Oriented Programming)",
+    "english": "**Object-Oriented Programming (OOPs)** is a powerful programming approach that organizes code around *objects* rather than functions and logic.<br><br>**Core Concepts:**<br>• **Objects** - Real-world entities with properties and behaviors<br>• **Classes** - Blueprints or templates for creating objects<br><br>**Four Fundamental Principles:**<br>• **Encapsulation** - <em>Data hiding</em> by bundling data and methods together<br>• **Inheritance** - <em>Code reusability</em> by creating new classes from existing ones<br>• **Polymorphism** - <em>Same interface, multiple forms</em> (method overloading/overriding)<br>• **Abstraction** - <em>Hiding complexity</em> by showing only essential features<br><br>**Benefits:** Code reusability, modularity, easier maintenance, and real-world modeling"
+  },
+  {
+    "hindi": "What is a Class and Object",
+    "english": "<strong>Class</strong> is a blueprint or template that defines the structure and behavior of objects.<br><br><strong>Object</strong> is an instance of a class - a real entity created from the class template.<br><br><strong>Example:</strong> <code>Car</code> is a class, <code>myCar</code> is an object of Car class."
+  },
+  {
+    "hindi": "What is Encapsulation",
+    "english": "<strong>Encapsulation</strong> is the bundling of data (variables) and methods that operate on that data into a single unit (class).<br><br><strong>Key features:</strong><br>• Data hiding using <code>private</code> access modifiers<br>• Controlled access through <code>getter</code> and <code>setter</code> methods<br>• Protects data from unauthorized access"
+  },
+  {
+    "hindi": "What is Abstraction",
+    "english": "<strong>Abstraction</strong> hides the complex implementation details and shows only the essential features of an object.<br><br><strong>Achieved through:</strong><br>• <em>Abstract classes</em> (using <code>abstract</code> keyword)<br>• <em>Interfaces</em> (using <code>interface</code> keyword)<br><br><strong>Example:</strong> You use a car without knowing how engine works internally."
+  },
+  {
+    "hindi": "Equals vs HashCode",
+    "english": "<code>equals()</code> method is used to compare two objects for equality, and <code>hashCode()</code> is used to compute the bucket in a hash table.<br><br>In collections like <code>HashMap</code>, <code>hashCode()</code> determines where the key (object) gets stored, and <code>equals()</code> ensures the correct key is identified during retrieval."
+  },
+      {
+        "hindi": "Spring Boot Annotations",
+        "english": "Spring Boot uses several annotations to simplify configuration, such as <code>@SpringBootApplication</code> (a convenience annotation that adds <code>@Configuration</code>, <code>@EnableAutoConfiguration</code>, and <code>@ComponentScan</code>), <code>@RestController</code> for creating RESTful controllers, and <code>@Autowired</code> for dependency injection."
+      },
+      {
+        "hindi": "What is Polymorphism",
+        "english": "<strong>Polymorphism</strong> means <em>\"one interface, many implementations\"</em>. It allows objects of different classes to be treated as objects of a common base class.<br><br><strong>Types:</strong><br>• <em>Method Overloading</em> (Compile-time)<br>• <em>Method Overriding</em> (Runtime)<br><br><strong>Example:</strong> <code>draw()</code> method works differently for Circle, Rectangle classes."
+      },
+      {
+        "hindi": "Method Overloading vs Method Overriding",
+        "english": "<strong>Method Overloading:</strong><br>• Same method name, different parameters<br>• Happens at <em>compile-time</em><br>• Within same class<br><br><strong>Method Overriding:</strong><br>• Same method signature in child class<br>• Happens at <em>runtime</em><br>• Between parent and child classes"
+      },
+      {
+        "hindi": "Constructor in Java",
+        "english": "<strong>Constructor</strong> is a special method used to initialize objects when they are created.<br><br><strong>Features:</strong><br>• Same name as class<br>• No return type<br>• Called automatically when object is created<br>• Can be overloaded<br><br><strong>Types:</strong> Default constructor and Parameterized constructor"
+      },
+      {
+        "hindi": "Access Modifiers in Java",
+        "english": "<strong>Access Modifiers</strong> control the visibility of classes, methods, and variables:<br><br>• <code>public</code> - accessible everywhere<br>• <code>protected</code> - accessible within package and subclasses<br>• <code>default</code> - accessible within package only<br>• <code>private</code> - accessible within same class only"
+      },
+      {
+        "hindi": "Runtime vs. Compile-time Polymorphism",
+        "english": "Compile-time polymorphism (also called static binding) is achieved through method overloading. Runtime polymorphism (dynamic binding) is achieved through method overriding."
+      },
+      {
+        "hindi": "Interface vs Abstract Class",
+        "english": "Interfaces can only have abstract methods and default methods with implementations, supporting multiple inheritance. Abstract classes can have a mix of complete and incomplete methods, constructors, and variables, and support single inheritance."
+      },
+      {
+        "hindi": "Default, Static Methods in Interfaces",
+        "english": "<strong>Default methods</strong> allow implementing methods in interfaces without breaking existing implementations.<br><br><strong>Static methods</strong> can be defined in interfaces and can be called independently of an object instance."
+      },
+      {
+        "hindi": "Final, Finally, Finalize",
+        "english": "<code>final</code> is used to restrict user from altering the value, subclassing, or overriding. <code>finally</code> is a block in exception handling that executes after a try/catch block. <code>finalize</code> is a method called by the garbage collector on an object when garbage collection is certain."
+      },
+      {
+        "hindi": "Functional Interface",
+        "english": "A <strong>functional interface</strong> is an interface with exactly <em>one abstract method</em>, used as the basis for lambda expressions in Java 8+."
+      },
+      {
+        "hindi": "Practice Lambda Expressions",
+        "english": "<strong>Lambda expressions</strong> provide a clear and concise way to implement single method interfaces using an expression.<br><br>They are often used with functional interfaces in the Java API."
+      },
+      {
+        "hindi": "Real-Time Queries Using Java 8 Features",
+        "english": "<strong>Java 8</strong> introduced many features that can help in building robust applications, like <em>streams</em> for processing collections of data and <em>lambda expressions</em> for concise code."
+      },
+      {
+        "hindi": "HashMap Working",
+        "english": "<strong>HashMap</strong> in Java uses an array of nodes as buckets to store map entries.<br><br>Each node contains a <em>key, value, hash,</em> and a reference to the next node. Keys must implement <code>hashCode()</code> and <code>equals()</code> methods appropriately."
+      },
+      {
+        "hindi": "Singleton Class",
+        "english": "A <strong>singleton class</strong> limits the number of instances of a class to <em>one</em>.<br><br>This is typically enforced by making the constructor <code>private</code> and providing a <code>static method</code> to return the instance."
+      },
+      {
+        "hindi": "Immutable (Why String is Immutable), How to Make Class Immutable",
+        "english": "<strong>Strings are immutable</strong> for security, efficiency, and synchronization.<br><br><strong>To make a class immutable:</strong><br>• Make all fields <code>final</code> and <code>private</code><br>• Provide no setters<br>• Ensure methods can't be overridden"
+      },
+      {
+        "hindi": "Comparable vs Comparator",
+        "english": "<code>Comparable</code> provides a <em>single sorting sequence</em>. A class implements Comparable to compare its instances.<br><br><code>Comparator</code> provides <em>multiple sorting sequences</em> and is external to the elements it orders."
+      },
+      {
+        "hindi": "Inheritance",
+        "english": "<strong>Inheritance</strong> is a fundamental concept in <em>OOP</em> where a new class is derived from an existing class, inheriting fields and methods."
+      },
+      {
+        "hindi": "Diamond Problem",
+        "english": "The <strong>diamond problem</strong> occurs in multiple inheritances when two classes inherit from the same superclass and are themselves inherited by another class.<br><br><em>Java avoids this</em> by allowing multiple inheritance only through interfaces."
+      },
+      {
+        "hindi": "Checked vs Unchecked Exceptions",
+        "english": "<strong>Checked exceptions</strong> are checked at <em>compile-time</em> while <strong>unchecked exceptions</strong> are checked at <em>runtime</em>.<br><br>Checked exceptions must be either caught or declared in the method signature."
+      },
+      {
+        "hindi": "ArrayList vs LinkedList vs HashMap vs HashSet",
+        "english": "<code>ArrayList</code> and <code>LinkedList</code> are <em>list implementations</em>, suitable for sequential access and manipulation.<br><br><code>HashMap</code> is a <em>key-value store</em> for fast lookups, and <code>HashSet</code> is a <em>set implementation</em> backed by a HashMap."
+      },
+      {
+        "hindi": "RestController vs Controller",
+        "english": "<code>@RestController</code> combines <code>@Controller</code> and <code>@ResponseBody</code>, simplifies the creation of RESTful services.<br><br><code>@Controller</code> is used for Spring MVC web applications and usually involves view resolution."
+      },
+      {
+        "hindi": "HTTP Methods: GET, POST, PUT, PATCH, DELETE",
+        "english": "These are <strong>HTTP methods</strong> for RESTful services:<br><br>• <code>GET</code> retrieves data<br>• <code>POST</code> creates new resources<br>• <code>PUT</code> updates or creates resources<br>• <code>PATCH</code> partially updates resources<br>• <code>DELETE</code> removes resources"
+      },
+      {
+        "hindi": "What is Idempotency",
+        "english": "An operation is <strong>idempotent</strong> if repeating it gives the same result.<br><br><code>PUT</code> and <code>DELETE</code> are idempotent as repeating these operations results in the same server state."
+      },
+      {
+        "hindi": "PUT vs POST vs PATCH",
+        "english": "• <code>PUT</code> replaces a resource<br>• <code>POST</code> creates a new resource or submits data<br>• <code>PATCH</code> updates part of a resource"
+      },
+      {
+        "hindi": "REST API",
+        "english": "A <strong>REST API</strong> is an interface that programs can use to interact with a server through the HTTP.<br><br>It adheres to <em>REST principles</em>, primarily using HTTP methods."
+      },
+      {
+        "hindi": "ORM (Object-Relational Mapping)",
+        "english": "<strong>ORM</strong> is a technique for converting data between incompatible type systems (like <em>object-oriented languages</em> and <em>relational databases</em>) in a way that allows them to interact seamlessly."
+      },
+      {
+        "hindi": "JPA (Java Persistence API)",
+        "english": "<strong>JPA</strong> is a Java specification for accessing, persisting, and managing data between <em>Java objects</em> and a <em>relational database</em>."
+      },
+      {
+        "hindi": "Business Logic in Service Layer",
+        "english": "<strong>Business logic</strong> should be implemented in the <em>service layer</em> to keep the controller lightweight and mainly responsible for routing requests."
+      },
+      {
+        "hindi": "Spring Boot Actuators",
+        "english": "<strong>Spring Boot Actuators</strong> provide production-ready features like <em>health check-up, metrics gathering, HTTP tracing</em>, etc., which can be used to monitor and manage applications."
+      },
+      {
+        "hindi": "Creating a Spring Boot Application",
+        "english": "A <strong>Spring Boot application</strong> can be created using <em>Spring Initializr</em> web tool or using <em>Spring CLI</em> by configuring the necessary dependencies."
+      },
+      {
+        "hindi": "Java 8 Features",
+        "english": "<strong>Key features include:</strong><br>• <em>Lambda expressions</em><br>• <em>Stream API</em><br>• <em>New Date-Time API</em><br>• <em>Default Methods</em><br>• <em>Optional class</em><br>• And more..."
+      },
+      {
+        "hindi": "Dependency Injection (DI)",
+        "english": "<strong>Dependency Injection</strong> is a design pattern that allows the removal of hard-coded dependencies, making the system more <em>modular</em> and <em>testable</em>."
+      },
+      {
+        "hindi": "@Service vs @Component",
+        "english": "<code>@Service</code> and <code>@Component</code> are annotations used to indicate that a class is a Spring component.<br><br><code>@Service</code> is used for <em>service layer</em> and <code>@Component</code> is a <em>generic stereotype</em> for any Spring-managed component."
+      },
+      {
+        "hindi": "SQL vs NoSQL",
+        "english": "<strong>SQL databases:</strong> relational, table-based, support complex queries and transactions ensuring ACID properties.<br><br><strong>NoSQL databases:</strong> non-relational, provide flexible data models, scale horizontally, and are suitable for big data and real-time web apps."
+      },
+      {
+        "hindi": "SQL Joins & Basic Queries",
+        "english": "<strong>SQL joins</strong> are used to combine rows from two or more tables based on a related column.<br><br><strong>Basic SQL queries include:</strong> <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, and <code>DELETE</code>."
+      },
+      {
+        "hindi": "Kafka",
+        "english": "<strong>Kafka</strong> is a distributed event streaming platform used for building real-time data pipelines and streaming apps.<br><br>It is capable of handling <em>trillions of events a day</em>. Key components include <em>topics, partitions, and producers/consumers</em>."
+      },
+      {
+        "hindi": "DDL vs DML",
+        "english": "<strong>DDL (Data Definition Language)</strong> includes SQL commands like <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code> which are used to define or modify database structures.<br><br><strong>DML (Data Manipulation Language)</strong> includes commands like <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, used for managing data within schema objects."
+      },
+      {
+        "hindi": "String vs StringBuffer vs StringBuilder",
+        "english": "<code>String</code> objects are <strong>immutable</strong> in Java, meaning once created their values cannot be changed.<br><br><code>StringBuffer</code> and <code>StringBuilder</code> are <strong>mutable</strong> classes. <code>StringBuffer</code> is <em>thread-safe and synchronized</em> whereas <code>StringBuilder</code> is <em>faster but not thread-safe</em>."
+      },
+      {
+        "hindi": "equals vs ==",
+        "english": "The <code>==</code> operator checks if two references point to the <em>exact same object</em>, whereas <code>equals()</code> method checks if two objects are <em>logically equivalent</em> (according to the logic defined in the <code>equals()</code> method of their class)."
+      },
+      {
+        "hindi": "ACID",
+        "english": "<strong>ACID</strong> stands for <em>Atomicity, Consistency, Isolation, Durability</em>.<br><br>These are the properties that guarantee database transactions are processed reliably and ensure the integrity of data within the database."
+      },
+      {
+        "hindi": "SOLID Principles",
+        "english": "<strong>SOLID</strong> stands for five design principles intended to make software designs more understandable, flexible, and maintainable:<br><br>• <em>Single Responsibility Principle</em><br>• <em>Open/Closed Principle</em><br>• <em>Liskov Substitution Principle</em><br>• <em>Interface Segregation Principle</em><br>• <em>Dependency Inversion Principle</em>"
+      },
+      {
+        "hindi": "Design Patterns: Factory Method, Singleton, Builder",
+        "english": "<strong>Factory Method:</strong> A creational pattern that uses factory methods to deal with the problem of creating objects without specifying the exact class of the object that will be created.<br><br><strong>Singleton:</strong> Ensures that a class has only one instance and provides a global point of access to it.<br><br><strong>Builder:</strong> Separates the construction of a complex object from its representation, allowing the same construction process to create various representations."
+      },
+      {
+        "hindi": "Threading",
+        "english": "<strong>Threading</strong> in Java allows concurrent execution of two or more parts of a program for maximum utilization of CPU.<br><br>Threads can be created by implementing the <code>Runnable</code> interface or extending the <code>Thread</code> class."
+      },
+      {
+        "hindi": "Serialization vs Deserialization",
+        "english": "<strong>Serialization</strong> is the process of converting an object into a byte stream to save to a disk or send over the network.<br><br><strong>Deserialization</strong> is the reverse process of converting the byte stream back into an object."
+      },
+      {
+        "hindi": "equals() vs == (revisited)",
+        "english": "In Java, <code>==</code> is a <em>reference comparison</em>, i.e., both objects point to the same memory location.<br><br><code>equals()</code> method is used for <em>content comparison</em> to check whether the values of two objects are the same."
+      },
+      {
+        "hindi": "CRUD",
+        "english": "<strong>CRUD</strong> stands for <em>Create, Read, Update, and Delete</em>. These are the four basic functions of persistent storage in web applications.<br><br><strong>For instance, in REST APIs:</strong><br>• <code>GET</code> is used to read or retrieve resources<br>• <code>POST</code> is used to create new resources<br>• <code>PUT</code> is used to update existing resources<br>• <code>DELETE</code> is used to delete resources"
+      },
+      {
+        "hindi": "What is Exception Handling",
+        "english": "<strong>Exception Handling</strong> is a mechanism to handle runtime errors gracefully without crashing the program.<br><br><strong>Keywords:</strong><br>• <code>try</code> - block that might throw exception<br>• <code>catch</code> - handles specific exceptions<br>• <code>finally</code> - always executes<br>• <code>throw</code> - manually throws exception<br>• <code>throws</code> - declares exceptions in method signature"
+      },
+      {
+        "hindi": "Difference between Array and ArrayList",
+        "english": "<strong>Array:</strong><br>• Fixed size, cannot be resized<br>• Can store primitives and objects<br>• Faster access (direct indexing)<br>• Memory efficient<br><br><strong>ArrayList:</strong><br>• Dynamic size, can grow/shrink<br>• Can only store objects (wrapper classes for primitives)<br>• Slower (due to dynamic resizing)<br>• More memory overhead"
+      },
+      {
+        "hindi": "What is Collection Framework",
+        "english": "<strong>Collection Framework</strong> provides a unified architecture for storing and manipulating groups of objects.<br><br><strong>Main Interfaces:</strong><br>• <code>List</code> - ordered collection (ArrayList, LinkedList)<br>• <code>Set</code> - unique elements (HashSet, TreeSet)<br>• <code>Queue</code> - FIFO operations (PriorityQueue)<br>• <code>Map</code> - key-value pairs (HashMap, TreeMap)"
+      },
+      {
+        "hindi": "What is Multithreading",
+        "english": "<strong>Multithreading</strong> allows concurrent execution of multiple threads to achieve better CPU utilization and performance.<br><br><strong>Benefits:</strong><br>• Better resource utilization<br>• Improved responsiveness<br>• Parallel execution<br><br><strong>Thread States:</strong> NEW, RUNNABLE, BLOCKED, WAITING, TERMINATED"
+      },
+      {
+        "hindi": "What is Garbage Collection",
+        "english": "<strong>Garbage Collection (GC)</strong> is Java's automatic memory management that reclaims memory used by objects that are no longer referenced.<br><br><strong>Types of GC:</strong><br>• Serial GC<br>• Parallel GC<br>• G1 GC<br>• ZGC<br><br><strong>GC Process:</strong> Mark → Sweep → Compact"
+      },
+      {
+        "hindi": "What is Spring Framework",
+        "english": "<strong>Spring Framework</strong> is a comprehensive framework for enterprise Java development providing <em>Dependency Injection</em> and <em>Aspect-Oriented Programming</em>.<br><br><strong>Core Features:</strong><br>• IoC (Inversion of Control)<br>• DI (Dependency Injection)<br>• AOP (Aspect-Oriented Programming)<br>• Transaction Management<br>• MVC Architecture"
+      },
+      {
+        "hindi": "Difference between == and .equals() for Strings",
+        "english": "<strong>For Strings specifically:</strong><br><br><code>==</code> compares <em>reference/memory location</em><br>• <code>\"hello\" == \"hello\"</code> → true (string pool)<br>• <code>new String(\"hello\") == \"hello\"</code> → false<br><br><code>.equals()</code> compares <em>actual content</em><br>• <code>\"hello\".equals(\"hello\")</code> → true<br>• <code>new String(\"hello\").equals(\"hello\")</code> → true"
+      },
+      {
+        "hindi": "What is Maven",
+        "english": "<strong>Maven</strong> is a build automation and project management tool for Java projects.<br><br><strong>Key Features:</strong><br>• Dependency management<br>• Project structure standardization<br>• Build lifecycle management<br>• Repository system<br><br><strong>Core file:</strong> <code>pom.xml</code> (Project Object Model)"
+      },
+      {
+        "hindi": "What is Git and Version Control",
+        "english": "<strong>Git</strong> is a distributed version control system for tracking changes in source code during software development.<br><br><strong>Key Commands:</strong><br>• <code>git add</code> - stage changes<br>• <code>git commit</code> - save changes<br>• <code>git push</code> - upload to remote<br>• <code>git pull</code> - download from remote<br>• <code>git merge</code> - combine branches"
+      },
+              {
+          "hindi": "What is API and Web Services",
+          "english": "<strong>API (Application Programming Interface)</strong> defines how different software components communicate.<br><br><strong>Web Services:</strong><br>• <em>SOAP</em> - XML-based protocol<br>• <em>REST</em> - architectural style using HTTP<br>• <em>GraphQL</em> - query language for APIs<br><br><strong>API Types:</strong> Public, Private, Partner APIs"
+        },
+        {
+          "hindi": "Database Normalization",
+          "english": "<strong>Database Normalization</strong> organizes data to reduce redundancy and improve data integrity.<br><br><strong>Normal Forms:</strong><br>• <em>1NF</em> - eliminate duplicate columns<br>• <em>2NF</em> - remove partial dependencies<br>• <em>3NF</em> - remove transitive dependencies<br>• <em>BCNF</em> - stronger version of 3NF"
+        },
+        {
+          "hindi": "What is MicroServices",
+          "english": "<strong>Microservices</strong> is an architectural approach where applications are built as a collection of small, independent services.<br><br><strong>Benefits:</strong><br>• Independent deployment<br>• Technology diversity<br>• Fault isolation<br>• Scalability<br><br><strong>Challenges:</strong> Network complexity, Data consistency, Service discovery"
+        },
+        {
+          "hindi": "What is Docker",
+          "english": "<strong>Docker</strong> is a containerization platform that packages applications and their dependencies into lightweight, portable containers.<br><br><strong>Key Concepts:</strong><br>• <em>Image</em> - template for containers<br>• <em>Container</em> - running instance of image<br>• <em>Dockerfile</em> - instructions to build image<br>• <em>Registry</em> - stores images (Docker Hub)"
+        },
+        {
+          "hindi": "What is JWT (JSON Web Token)",
+          "english": "<strong>JWT</strong> is a compact, URL-safe token format for securely transmitting information between parties.<br><br><strong>Structure:</strong><br>• <em>Header</em> - algorithm and token type<br>• <em>Payload</em> - claims/data<br>• <em>Signature</em> - verification<br><br><strong>Format:</strong> <code>header.payload.signature</code>"
+        },
+        {
+          "hindi": "What is Hibernate",
+          "english": "<strong>Hibernate</strong> is an ORM (Object-Relational Mapping) framework that simplifies database operations in Java.<br><br><strong>Key Features:</strong><br>• Automatic SQL generation<br>• Caching mechanisms<br>• Lazy loading<br>• Transaction management<br><br><strong>Core files:</strong> <code>hibernate.cfg.xml</code>, entity mappings"
+        },
+        {
+          "hindi": "JDK vs JVM vs JRE - What's the difference?",
+          "english": "<strong>JDK (Java Development Kit):</strong><br>• Complete development package for Java<br>• Includes: <em>javac, jar, debugging tools, javap</em><br>• Used by developers to compile and debug Java programs<br><br><strong>JRE (Java Runtime Environment):</strong><br>• Runtime package for executing Java applications<br>• Includes: <em>JVM + Libraries + Other Components</em><br>• Used by end-users to run Java applications<br><br><strong>JVM (Java Virtual Machine):</strong><br>• Virtual machine that runs Java bytecode<br>• Makes Java platform independent<br>• Includes: <em>Just In Time Compiler (JIT)</em><br><br><strong>Relationship:</strong> JDK ⊃ JRE ⊃ JVM"
+        },
+        {
+          "hindi": "What is Java ByteCode?",
+          "english": "<strong>Java ByteCode</strong> is the intermediate representation of Java programs that JVM can understand and execute.<br><br><strong>Key Points:</strong><br>• Generated when Java source code (.java) is compiled by <em>javac</em><br>• Stored in <code>.class</code> files<br>• Platform-independent instruction set<br>• Each bytecode instruction is composed of <em>1-2 bytes</em><br><br><strong>Process:</strong><br><code>.java</code> → <em>javac compiler</em> → <code>.class (bytecode)</code> → <em>JVM</em> → <em>Machine Code</em><br><br><strong>Advantage:</strong> Write Once, Run Anywhere (WORA) capability"
+        }
+       
+      ]
+  
+  
