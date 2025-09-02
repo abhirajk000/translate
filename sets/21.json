@@ -1,0 +1,407 @@
+[
+    {
+        "structure": "21 - (Active Sentence)",
+        "tense": "Simple Future",
+        "continuity": "Sub + will/shall + V1 + O"
+    },
+    {
+        "hindi": "मैं कल बाज़ार जाऊँगा।",
+        "english": "I will go to the market tomorrow."
+    },
+    {
+        "hindi": "वह मेरी मदद करेगा।",
+        "english": "He will help me."
+    },
+    {
+        "hindi": "हम पार्टी में शामिल होंगे।",
+        "english": "We will join the party."
+    },
+    {
+        "hindi": "तुम परीक्षा पास करोगे।",
+        "english": "You will pass the exam."
+    },
+    {
+        "hindi": "वे देर से आएँगे।",
+        "english": "They will come late."
+    },
+    {
+        "hindi": "मैं किताब पढ़ूँगा।",
+        "english": "I will read the book."
+    },
+    {
+        "hindi": "वह कल फ़ोन करेगी।",
+        "english": "She will call tomorrow."
+    },
+    {
+        "hindi": "हम क्रिकेट खेलेंगे।",
+        "english": "We will play cricket."
+    },
+    {
+        "hindi": "तुम दिल्ली जाओगे।",
+        "english": "You will go to Delhi."
+    },
+    {
+        "hindi": "वे मदद माँगेंगे।",
+        "english": "They will ask for help."
+    },
+    {
+        "hindi": "मैं संगीत सुनूँगा।",
+        "english": "I will listen to music."
+    },
+    {
+        "hindi": "वह गाना गाएगी।",
+        "english": "She will sing a song."
+    },
+    {
+        "hindi": "हम खाना पकाएँगे।",
+        "english": "We will cook food."
+    },
+    {
+        "hindi": "तुम टीवी देखोगे।",
+        "english": "You will watch TV."
+    },
+    {
+        "hindi": "वे मैच जीतेंगे।",
+        "english": "They will win the match."
+    },
+    {
+        "hindi": "मैं समय पर पहुँचूँगा।",
+        "english": "I will reach on time."
+    },
+    {
+        "hindi": "वह परीक्षा देगा।",
+        "english": "He will take the exam."
+    },
+    {
+        "hindi": "हम यात्रा करेंगे।",
+        "english": "We will travel."
+    },
+    {
+        "hindi": "तुम कंप्यूटर सीखोगे।",
+        "english": "You will learn computers."
+    },
+    {
+        "hindi": "वे दौड़ में भाग लेंगे।",
+        "english": "They will participate in the race."
+    },
+    {
+        "hindi": "मैं नए जूते खरीदूँगा।",
+        "english": "I will buy new shoes."
+    },
+    {
+        "hindi": "वह कविता लिखेगी।",
+        "english": "She will write a poem."
+    },
+    {
+        "hindi": "हम गाना सुनेंगे।",
+        "english": "We will listen to the song."
+    },
+    {
+        "hindi": "तुम किताब लाओगे।",
+        "english": "You will bring the book."
+    },
+    {
+        "hindi": "वे झगड़ा करेंगे।",
+        "english": "They will fight."
+    },
+    {
+        "hindi": "मैं दूध पिऊँगा।",
+        "english": "I will drink milk."
+    },
+    {
+        "hindi": "वह नृत्य करेगी।",
+        "english": "She will dance."
+    },
+    {
+        "hindi": "हम स्कूल जाएँगे।",
+        "english": "We will go to school."
+    },
+    {
+        "hindi": "तुम परीक्षा दोगे।",
+        "english": "You will take the exam."
+    },
+    {
+        "hindi": "वे गाड़ी खरीदेंगे।",
+        "english": "They will buy a car."
+    },
+    {
+        "hindi": "मैं नया घर बनाऊँगा।",
+        "english": "I will build a new house."
+    },
+    {
+        "hindi": "वह फल खाएगी।",
+        "english": "She will eat fruits."
+    },
+    {
+        "hindi": "हम शिक्षक से मिलेंगे।",
+        "english": "We will meet the teacher."
+    },
+    {
+        "hindi": "तुम होमवर्क करोगे।",
+        "english": "You will do homework."
+    },
+    {
+        "hindi": "वे गाँव जाएँगे।",
+        "english": "They will go to the village."
+    },
+    {
+        "hindi": "मैं काम पूरा करूँगा।",
+        "english": "I will finish the work."
+    },
+    {
+        "hindi": "वह कल चित्र बनाएगा।",
+        "english": "He will draw a picture tomorrow."
+    },
+    {
+        "hindi": "हम फ़ुटबॉल खेलेंगे।",
+        "english": "We will play football."
+    },
+    {
+        "hindi": "तुम चाय बनाओगे।",
+        "english": "You will make tea."
+    },
+    {
+        "hindi": "वे स्कूल में पढ़ेंगे।",
+        "english": "They will study in school."
+    },
+    {
+        "hindi": "मैं मिठाई खाऊँगा।",
+        "english": "I will eat sweets."
+    },
+    {
+        "hindi": "वह स्टेशन जाएगी।",
+        "english": "She will go to the station."
+    },
+    {
+        "hindi": "हम गाना गाएँगे।",
+        "english": "We will sing a song."
+    },
+    {
+        "hindi": "तुम खेलोगे।",
+        "english": "You will play."
+    },
+    {
+        "hindi": "वे दौड़ेंगे।",
+        "english": "They will run."
+    },
+    {
+        "hindi": "मैं कल घर जाऊँगा।",
+        "english": "I will go home tomorrow."
+    },
+    {
+        "hindi": "वह गाड़ी चलाएगा।",
+        "english": "He will drive the car."
+    },
+    {
+        "hindi": "हम नया प्रोजेक्ट शुरू करेंगे।",
+        "english": "We will start a new project."
+    },
+    {
+        "hindi": "तुम परीक्षा लिखोगे।",
+        "english": "You will write the exam."
+    },
+    {
+        "hindi": "वे टिकट खरीदेंगे।",
+        "english": "They will buy the tickets."
+    },
+    {
+        "hindi": "मैं नया फोन लूँगा।",
+        "english": "I will buy a new phone."
+    },
+    {
+        "hindi": "वह मेरे साथ चलेगी।",
+        "english": "She will go with me."
+    },
+    {
+        "hindi": "हम साथ काम करेंगे।",
+        "english": "We will work together."
+    },
+    {
+        "hindi": "तुम खेल जीतोगे।",
+        "english": "You will win the game."
+    },
+    {
+        "hindi": "वे कल मिलेंगे।",
+        "english": "They will meet tomorrow."
+    },
+    {
+        "hindi": "मैं कल काम करूँगा।",
+        "english": "I will work tomorrow."
+    },
+    {
+        "hindi": "वह सोएगी।",
+        "english": "She will sleep."
+    },
+    {
+        "hindi": "हम तुम्हें बुलाएँगे।",
+        "english": "We will invite you."
+    },
+    {
+        "hindi": "तुम मदद करोगे।",
+        "english": "You will help."
+    },
+    {
+        "hindi": "वे खाना खाएँगे।",
+        "english": "They will eat food."
+    },
+    {
+        "hindi": "मैं किताब खरीदूँगा।",
+        "english": "I will buy a book."
+    },
+    {
+        "hindi": "वह स्टेशन पर पहुँचेगा।",
+        "english": "He will reach the station."
+    },
+    {
+        "hindi": "हम गाना सुनाएँगे।",
+        "english": "We will sing a song."
+    },
+    {
+        "hindi": "तुम फिल्म देखोगे।",
+        "english": "You will watch a movie."
+    },
+    {
+        "hindi": "वे स्कूल में मिलेंगे।",
+        "english": "They will meet in school."
+    },
+    {
+        "hindi": "मैं कल पढ़ाई करूँगा।",
+        "english": "I will study tomorrow."
+    },
+    {
+        "hindi": "वह काम शुरू करेगी।",
+        "english": "She will start the work."
+    },
+    {
+        "hindi": "हम ट्रेन पकड़ेंगे।",
+        "english": "We will catch the train."
+    },
+    {
+        "hindi": "तुम मुझे फ़ोन करोगे।",
+        "english": "You will call me."
+    },
+    {
+        "hindi": "वे विदेश जाएँगे।",
+        "english": "They will go abroad."
+    },
+    {
+        "hindi": "मैं अपना होमवर्क करूँगा।",
+        "english": "I will do my homework."
+    },
+    {
+        "hindi": "वह मेरी मदद करेगी।",
+        "english": "She will help me."
+    },
+    {
+        "hindi": "हम साथ पढ़ेंगे।",
+        "english": "We will study together."
+    },
+    {
+        "hindi": "तुम दूध पियोगे।",
+        "english": "You will drink milk."
+    },
+    {
+        "hindi": "वे घर बनाएँगे।",
+        "english": "They will build a house."
+    },
+    {
+        "hindi": "मैं स्कूल जाऊँगा।",
+        "english": "I will go to school."
+    },
+    {
+        "hindi": "वह मुझसे मिलेगी।",
+        "english": "She will meet me."
+    },
+    {
+        "hindi": "हम परीक्षा पास करेंगे।",
+        "english": "We will pass the exam."
+    },
+    {
+        "hindi": "तुम नया फोन लोगे।",
+        "english": "You will take a new phone."
+    },
+    {
+        "hindi": "वे नया काम करेंगे।",
+        "english": "They will do new work."
+    },
+    {
+        "hindi": "मैं बगीचे में जाऊँगा।",
+        "english": "I will go to the garden."
+    },
+    {
+        "hindi": "वह खाना पकाएगी।",
+        "english": "She will cook food."
+    },
+    {
+        "hindi": "हम स्टेशन जाएँगे।",
+        "english": "We will go to the station."
+    },
+    {
+        "hindi": "तुम गाना सुनोगे।",
+        "english": "You will listen to the song."
+    },
+    {
+        "hindi": "वे पार्टी करेंगे।",
+        "english": "They will party."
+    },
+    {
+        "hindi": "मैं कल तुम्हें बुलाऊँगा।",
+        "english": "I will call you tomorrow."
+    },
+    {
+        "hindi": "वह खेल खेलेगा।",
+        "english": "He will play the game."
+    },
+    {
+        "hindi": "हम तुम्हारे साथ चलेंगे।",
+        "english": "We will go with you."
+    },
+    {
+        "hindi": "तुम किताब पढ़ोगे।",
+        "english": "You will read the book."
+    },
+    {
+        "hindi": "वे काम करेंगे।",
+        "english": "They will work."
+    },
+    {
+        "hindi": "मैं कल सोऊँगा।",
+        "english": "I will sleep tomorrow."
+    },
+    {
+        "hindi": "वह नहाएगा।",
+        "english": "He will take a bath."
+    },
+    {
+        "hindi": "हम किताब लिखेंगे।",
+        "english": "We will write a book."
+    },
+    {
+        "hindi": "तुम कल खेलोगे।",
+        "english": "You will play tomorrow."
+    },
+    {
+        "hindi": "वे घर पर रहेंगे।",
+        "english": "They will stay at home."
+    },
+    {
+        "hindi": "मैं काम सीखूँगा।",
+        "english": "I will learn the work."
+    },
+    {
+        "hindi": "वह नया कपड़ा खरीदेगी।",
+        "english": "She will buy new clothes."
+    },
+    {
+        "hindi": "हम यात्रा करेंगे।",
+        "english": "We will travel."
+    },
+    {
+        "hindi": "तुम स्कूल जाओगे।",
+        "english": "You will go to school."
+    },
+    {
+        "hindi": "वे मेरी बात सुनेंगे।",
+        "english": "They will listen to me."
+    }
+]
