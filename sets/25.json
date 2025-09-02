@@ -1,7 +1,9 @@
 [
-    {"structure": "25",
-    "tense": "Future Perfect Passive",
-    "continuity": "Sub + shall / will + (not) + have + been + v3 + O." }  ,
+    {
+        "structure": "25 - (Passive Sentence)",
+        "tense": "Future Perfect Passive",
+        "continuity": "Sub + shall / will + (not) + have + been + v3 + O"
+    },
 
       { "hindi": "क्या पत्र भेजा गया होगा?", "english": "Will the letter have been sent?" },
       { "hindi": "क्या घर साफ किया गया होगा?", "english": "Will the house have been cleaned?" },

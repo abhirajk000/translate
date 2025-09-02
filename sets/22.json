@@ -1,8 +1,8 @@
 [
     {
-      "structure": "22 - (Passive Sentence)",
-      "tense": "Simple Future",
-      "continuity": "Declarative: Sub + shall/will + (not) + be + V3 + O | Interrogative: Shall/will + Sub + (not) + be + V3 + O?"
+        "structure": "22 - (Passive Sentence)",
+        "tense": "Simple Future",
+        "continuity": "Declarative: Sub + shall/will + (not) + be + V3 + O | Interrogative: Shall/will + Sub + (not) + be + V3 + O?"
     },
     { "hindi": "क्या रिपोर्ट लिखी जाएगी?", "english": "Will the report be written?" },
     { "hindi": "चाय नहीं बनाई जाएगी।", "english": "Tea will not be made." },
